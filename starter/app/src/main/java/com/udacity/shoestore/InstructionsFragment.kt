@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentInstructionsBinding
-import com.udacity.shoestore.databinding.FragmentLoginBinding
 
 class InstructionsFragment : Fragment() {
+
+    private val viewModel: ShoesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,9 +22,10 @@ class InstructionsFragment : Fragment() {
             inflater, R.layout.fragment_instructions, container, false
         )
 
-        binding.startShoppingButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_instructionsFragment_to_listingFragment)
-        )
+        binding.startShoppingButton.setOnClickListener {
+            viewModel.avoidOnBoarding()
+            this.findNavController().navigate(R.id.action_instructionsFragment_to_listingFragment)
+        }
 
         return binding.root
     }

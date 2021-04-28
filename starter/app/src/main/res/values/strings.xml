@@ -23,4 +23,10 @@
     <string name="description">Description</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="shoeListing">Shoe Listing</string>
+    <string name="login_fragment">Login Fragment</string>
+    <string name="welcome_fragment">Welcome Fragment</string>
+    <string name="instructions_fragment">Instructions Fragment</string>
+    <string name="listing_fragment">Listing Fragment</string>
+    <string name="detail_fragment">Detail Fragment</string>
 </resources>

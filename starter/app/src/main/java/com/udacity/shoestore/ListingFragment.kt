@@ -24,6 +24,7 @@ class ListingFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_listing, container, false
         )
+        binding.viewModel = viewModel
 
         setHasOptionsMenu(true)
 

@@ -5,38 +5,54 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.udacity.shoestore.databinding.FragmentDetailBinding
+import com.udacity.shoestore.models.Shoe
 
 class DetailFragment : Fragment() {
     private val viewModel: ShoesViewModel by activityViewModels()
+    lateinit var navController: NavController
+    private lateinit var binding: FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentDetailBinding>(
+        binding = DataBindingUtil.inflate<FragmentDetailBinding>(
             inflater, R.layout.fragment_detail, container, false
         )
 
-        val navController = requireActivity().findNavController(R.id.navHostFragment)
+        navController = requireActivity().findNavController(R.id.navHostFragment)
 
-        binding.cancelButton.setOnClickListener {
-            navController.navigateUp()
-        }
-
-        binding.saveButton.setOnClickListener {
-            viewModel.addShoe(
-                binding.shoeName.text.toString(),
-                binding.shoeCompany.text.toString(),
-                binding.shoeSize.text.toString().toDouble(),
-                binding.shoeDescription.text.toString()
-            )
-            navController.navigateUp()
-        }
+        binding.shoesViewModel = viewModel
+        binding.detail = this
 
         return binding.root
+    }
+
+    fun addShoe() {
+        binding.apply {
+            val shoeName: String = binding.shoeName.text.toString()
+            val shoeCompany: String = binding.shoeCompany.text.toString()
+            val shoeSize: String = binding.shoeSize.text.toString()
+            val shoeDescription: String = binding.shoeDescription.text.toString()
+
+            if (shoeName.isEmpty()) {
+                Toast.makeText(context, R.string.must_add_a_model, Toast.LENGTH_SHORT).show()
+            } else if (shoeCompany.isEmpty()) {
+                Toast.makeText(context, R.string.must_add_a_company, Toast.LENGTH_SHORT).show()
+            } else if (shoeSize.isEmpty() || shoeSize.toDouble().isNaN()) {
+                Toast.makeText(context, R.string.must_add_a_size, Toast.LENGTH_SHORT).show()
+            } else if (shoeDescription.isEmpty()) {
+                Toast.makeText(context, R.string.must_add_a_description, Toast.LENGTH_SHORT).show()
+            } else {
+                navController.navigateUp()
+                viewModel.addShoe(Shoe(shoeName, shoeSize.toDouble(), shoeCompany, shoeDescription))
+            }
+        }
     }
 }

@@ -13,7 +13,8 @@
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            />
         <action
             android:id="@+id/action_loginFragment_to_listingFragment"
             app:destination="@id/listingFragment"
@@ -37,7 +38,8 @@
         <action
             android:id="@+id/action_instructionsFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:enterAnim="@anim/slide_out_left" />
+            app:enterAnim="@anim/slide_out_left"
+            app:popUpTo="@id/welcomeFragment" />
         <action
             android:id="@+id/action_instructionsFragment_to_listingFragment"
             app:destination="@id/listingFragment"
@@ -55,6 +57,9 @@
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_top_bottom" />
+        <action
+            android:id="@+id/action_listingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"

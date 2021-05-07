@@ -28,6 +28,7 @@
     <style name="textFields">
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textSize">@dimen/medium_size</item>
+        <item name="minHeight">48dp</item>
     </style>
     <style name="button_1">
         <item name="fontFamily">@font/roboto</item>

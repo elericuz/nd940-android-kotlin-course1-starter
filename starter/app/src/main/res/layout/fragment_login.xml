@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--    As I wanted to place all the views at the bottom of the screen-->
+<!--    I thought it was better to use ConstraintLayout to keep the -->
+<!--    same look in landscape mode as well as in portrait mode-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
@@ -10,62 +14,62 @@
 
         <TextView
             android:id="@+id/login_title"
+            style="@style/titles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="392dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/welcome_title"
-            style="@style/titles"
+            app:layout_constraintBottom_toTopOf="@+id/username_field"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/username_field"
+            style="@style/textFields"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:ems="10"
-            style="@style/textFields"
             android:hint="@string/username_text"
             android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/password_field"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_title"
             tools:hint="@string/username_text" />
 
         <EditText
             android:id="@+id/password_field"
+            style="@style/textFields"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:ems="10"
-            style="@style/textFields"
             android:hint="@string/password_text"
             android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_field"
             tools:hint="@string/password_text" />
 
         <Button
             android:id="@+id/login_button"
+            style="@style/button_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            style="@style/button_1"
+            android:layout_marginBottom="32dp"
             android:text="@string/login_text"
+            app:layout_constraintBottom_toTopOf="@+id/new_account_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_field" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/new_account_button"

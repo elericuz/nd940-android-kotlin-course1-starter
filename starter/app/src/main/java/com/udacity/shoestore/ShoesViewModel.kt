@@ -12,8 +12,7 @@ class ShoesViewModel: ViewModel() {
     private var _shoeList = MutableLiveData<ArrayList<Shoe>>()
     val shoeList: LiveData<ArrayList<Shoe>> get() = _shoeList
 
-    fun addShoe(name: String, company: String, size: Double, description: String) {
-        val shoe = Shoe(name, size, company, description, listOf())
+    fun addShoe(shoe: Shoe) {
         if (_shoeList.value.isNullOrEmpty()) {
             _shoeList.value = arrayListOf(shoe)
         } else {

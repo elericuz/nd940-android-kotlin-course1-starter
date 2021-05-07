@@ -3,6 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--    As I decided to place the textfields next to its correspending field,-->
+<!--    I'm using its constraints to align them properly, so I think this-->
+<!--    would be easier with ConstraintLayout as ViewGroup-->
+
+    <data>
+        <variable
+            name="shoesViewModel"
+            type="com.udacity.shoestore.ShoesViewModel" />
+
+        <variable
+            name="detail"
+            type="com.udacity.shoestore.DetailFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detail_layout"
         android:layout_width="match_parent"
@@ -135,6 +149,7 @@
             android:layout_marginStart="72dp"
             android:layout_marginBottom="16dp"
             android:text="@string/save"
+            android:onClick="@{() -> detail.addShoe()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -147,6 +162,7 @@
             android:layout_marginEnd="72dp"
             android:layout_marginBottom="16dp"
             android:text="@android:string/cancel"
+            android:onClick="@{() -> detail.navController.navigateUp() }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/saveButton" />

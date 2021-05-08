@@ -17,6 +17,7 @@ class DetailFragment : Fragment() {
     private val viewModel: ShoesViewModel by activityViewModels()
     lateinit var navController: NavController
     private lateinit var binding: FragmentDetailBinding
+    private val shoe: Shoe = Shoe("", 0.00, "", "")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +29,7 @@ class DetailFragment : Fragment() {
 
         navController = requireActivity().findNavController(R.id.navHostFragment)
 
+        binding.shoe = shoe
         binding.shoesViewModel = viewModel
         binding.detail = this
 
@@ -36,22 +38,18 @@ class DetailFragment : Fragment() {
 
     fun addShoe() {
         binding.apply {
-            val shoeName: String = binding.shoeName.text.toString()
-            val shoeCompany: String = binding.shoeCompany.text.toString()
-            val shoeSize: String = binding.shoeSize.text.toString()
-            val shoeDescription: String = binding.shoeDescription.text.toString()
-
-            if (shoeName.isEmpty()) {
+            if (shoe!!.name.isEmpty()) {
                 Toast.makeText(context, R.string.must_add_a_model, Toast.LENGTH_SHORT).show()
-            } else if (shoeCompany.isEmpty()) {
+            } else if (shoe!!.company.isEmpty()) {
                 Toast.makeText(context, R.string.must_add_a_company, Toast.LENGTH_SHORT).show()
-            } else if (shoeSize.isEmpty() || shoeSize.toDouble().isNaN()) {
+            } else if (shoe!!.size.isNaN() || (shoe!!.size == 0.0)) {
                 Toast.makeText(context, R.string.must_add_a_size, Toast.LENGTH_SHORT).show()
-            } else if (shoeDescription.isEmpty()) {
+            } else if (shoe!!.description.isEmpty()) {
                 Toast.makeText(context, R.string.must_add_a_description, Toast.LENGTH_SHORT).show()
             } else {
                 navController.navigateUp()
-                viewModel.addShoe(Shoe(shoeName, shoeSize.toDouble(), shoeCompany, shoeDescription))
+                viewModel.addShoe(shoe!!)
+                invalidateAll()
             }
         }
     }

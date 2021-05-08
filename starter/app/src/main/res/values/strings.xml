@@ -31,6 +31,6 @@
     <string name="detail_fragment">Detail Fragment</string>
     <string name="must_add_a_model">You must add a name</string>
     <string name="must_add_a_company">You must add a company</string>
-    <string name="must_add_a_size">You must add a size</string>
+    <string name="must_add_a_size">You must add a valid size</string>
     <string name="must_add_a_description">You must add a description</string>
 </resources>
